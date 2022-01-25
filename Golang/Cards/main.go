@@ -15,21 +15,17 @@ func main() {
 
 		fmt.Println(card)
 	} */
-
 	cards.print()
 	fmt.Println(cards)
 }
 
 func newCard() string {
-
 	return "Five of Diamonds"
 }
 
 func (d deck) print() {
 
 	for i, card := range d {
-
 		fmt.Println(i, card)
 	}
-
 }
