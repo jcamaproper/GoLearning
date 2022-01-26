@@ -10,11 +10,9 @@ func main() {
 
 	//cards := []string{"Ace of Diamonds", newCard()}
 	//cards = append(cards, "Six of Spades")
-	cards := deck{"Ace of Diamonds", newCard()}
-	/* for _, card := range cards {
+	//cards := deck{"Ace of Diamonds", newCard()}
 
-		fmt.Println(card)
-	} */
+	cards := newDeck()
 	cards.print()
 	fmt.Println(cards)
 }
@@ -41,7 +39,7 @@ func newDeck() deck {
 
 	for _, suit := range cardSuits {
 		for _, value := range cardValues {
-			cards = append(cards, suit+" of "+value)
+			cards = append(cards, value+" of "+suit)
 		}
 	}
 	return cards
