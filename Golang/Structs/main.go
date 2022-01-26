@@ -45,8 +45,11 @@ func main() {
 	}
 
 	//se crea un puntero para hacer referencia al espacio de memoria donde está la variable
-	j := &juan
+	//asgino la dirección de memoria donde esta esa variable
+	/* j := &juan
 	j.updateFirsName("Toño")
+	juan.print() */
+	juan.updateFirsName("Toño")
 	juan.print()
 }
 
@@ -61,5 +64,6 @@ func (p person) print() {
 
 //recibo un puntero para modificar el espacio de memoria, no copiarlo en otro
 func (p *person) updateFirsName(newName string) {
+	//con el * recibo el valor que esta en el espacio de memoria de esta variable y lo modifico
 	p.fisrtName = newName
 }
