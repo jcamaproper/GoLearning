@@ -43,7 +43,10 @@ func main() {
 			zip:     07040,
 		},
 	}
-	juan.updateFirsName("Toño")
+
+	//se crea un puntero para hacer referencia al espacio de memoria donde está la variable
+	j := &juan
+	j.updateFirsName("Toño")
 	juan.print()
 }
 
@@ -51,6 +54,12 @@ func (p person) print() {
 	fmt.Println(p)
 }
 
-func (p person) updateFirsName(newName string) {
+//en lugar de actualizar, asgina el valor en otro espacio de memoria, no en el de la variable que quiero modifcar
+/* func (p person) updateFirsName(newName string) {
+	p.fisrtName = newName
+} */
+
+//recibo un puntero para modificar el espacio de memoria, no copiarlo en otro
+func (p *person) updateFirsName(newName string) {
 	p.fisrtName = newName
 }
