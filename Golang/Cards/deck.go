@@ -29,3 +29,5 @@ func newDeck() deck {
 	}
 	return cards
 }
+
+//create a hand of cards
