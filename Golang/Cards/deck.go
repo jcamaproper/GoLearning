@@ -14,3 +14,18 @@ func (d deck) print() {
 	}
 
 }
+
+//create and return a list of play cards - Slice of string or type deck
+func newDeck() deck {
+
+	cards := deck{}
+	cardSuits := []string{"Spades", "Diamonds", "Hearts", "Clubs"}
+	cardValues := []string{"Ace", "Two", "Three", "Four"}
+
+	for _, suit := range cardSuits {
+		for _, value := range cardValues {
+			cards = append(cards, suit+" of "+value)
+		}
+	}
+	return cards
+}
