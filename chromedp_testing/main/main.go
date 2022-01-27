@@ -5,7 +5,6 @@ import (
 	"time"
 	"utils/chrome"
 
-	//"github.com/chromedp/cdproto/cdp"
 	ch "github.com/chromedp/chromedp"
 )
 
