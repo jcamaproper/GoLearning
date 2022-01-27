@@ -1,17 +1,8 @@
 package main
 
-import (
-	"fmt"
-	"io/ioutil"
-	"math/rand"
-	"os"
-	"strings"
-	"time"
-)
-
 // Create a new type of deck
 // which is a slice of string
-type deck []string
+//type deck []string
 
 func main() {
 
@@ -36,6 +27,7 @@ func main() {
 	cards.print()
 }
 
+/*
 //add new card to the deck
 func newCard() string {
 	return "Five of Diamonds"
@@ -111,3 +103,4 @@ func (d deck) shuffle() deck {
 
 	return d
 }
+*/
