@@ -12,23 +12,24 @@ import (
 
 const (
 	//login elements
-	loginButton  = "#__next > div > div.main-content > div.bywovg-0.kuGegY > div:nth-child(1) > div > div.sc-111rrsy-0.qbrWo > button.x0o17e-0.qrNYy"
+	/* loginButton  = "#__next > div > div.main-content > div.bywovg-0.kuGegY > div:nth-child(1) > div > div.sc-111rrsy-0.qbrWo > button.x0o17e-0.qrNYy"
 	loginWindow  = "body > div.t8xka3-0.clxZon.modalOpened > div > div"
 	emailField   = "body > div.t8xka3-0.clxZon.modalOpened > div > div > div > div:nth-child(3) > input"
 	passField    = "body > div.t8xka3-0.clxZon.modalOpened > div > div > div > div.sc-1htht4q-3.kHSKLo.last > div.sc-1srpo52-0.ciHfxX > input"
-	loginButtonW = "body > div.t8xka3-0.clxZon.modalOpened > div > div > div > div.sc-1htht4q-6.kUXNCx > button"
+	loginButtonW = "body > div.t8xka3-0.clxZon.modalOpened > div > div > div > div.sc-1htht4q-6.kUXNCx > button" */
 
 	//Home Elements
 	homePage      = "#__next > div > div.main-content > div.sc-57oli2-0.comDeo.cmc-body-wrapper > div"
 	btcPriceLabel = "#__next > div > div.main-content > div.sc-57oli2-0.comDeo.cmc-body-wrapper > div > div > div.h7vnx2-1.bFzXgL > table > tbody > tr:nth-child(1) > td:nth-child(4) > div > a > span"
 
 	// credentials
-	email = "jcamacholpz@gmail.com"
-	pass  = "Juan1996"
+	/* email = "jcamacholpz@gmail.com"
+	pass  = "Juan1996" */
 )
 
 func main() {
 
+	start := time.Now()
 	// Create a context
 	ctx, cancel, err := chrome.StartChrome(false)
 	if err != nil {
@@ -48,7 +49,7 @@ func main() {
 		return
 	}
 
-	// click on login button
+	/* // click on login button
 
 	if err := ch.Run(ctx,
 		// Wait ready, until find the element on page
@@ -81,19 +82,19 @@ func main() {
 	}
 
 	//pause to pass CAPTCHA manually
-	time.Sleep(15 * time.Second)
+	time.Sleep(15 * time.Second) */
 
 	var btcPrice string
 	// get BTC current price
 	if err := ch.Run(ctx,
 		//ch.WaitReady(homePage, ch.ByQuery),
-		ch.Value(btcPriceLabel, &btcPrice, ch.ByQuery),
+		ch.Text(btcPriceLabel, &btcPrice, ch.ByQuery),
 	); err != nil {
 		println(err.Error())
 		return
 	}
 
 	fmt.Println("Bitcoin price is: ", btcPrice)
-
+	fmt.Printf("\nTook: %f secs\n", time.Since(start).Seconds())
 	//time.Sleep(1 * time.Second)
 }
