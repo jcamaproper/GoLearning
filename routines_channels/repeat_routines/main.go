@@ -15,7 +15,6 @@ func main() {
 		"https://www.stackoverflow.com",
 		"https://www.golang.org",
 		"https://www.amazon.com",
-		"https://proper.ai",
 		"https://www.linkedin.com/feed"}
 
 	// On this way, the code does no wait each link to complete, run each link in parallel
@@ -24,21 +23,22 @@ func main() {
 		go checkLink(link, c)
 
 	}
-	// wait for a value to be sent into the channel. When we get one, log it out inmediately
-	for i := 0; i < len(links); i++ {
-		fmt.Println(<-c)
+	// infinite loop still bloking channel
+	for l := range c {
+		//go checkLink(<-c, c)
+		go checkLink(l, c)
 	}
 }
 
 func checkLink(link string, c chan string) {
 	_, err := http.Get(link)
 	if err != nil {
-		fmt.Println(link, " ", "Its down :c")
+		fmt.Println(link, " ", "Its down")
 		// Send value to the channel
-		c <- "Down"
+		c <- link
 		return
 	}
-	fmt.Println(link, " ", "Its up! =D")
+	fmt.Println(link, " ", "Its up")
 	// Send value to the channel
-	c <- "Up"
+	c <- link
 }
