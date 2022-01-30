@@ -29,11 +29,18 @@ func main() {
 	   		go checkLink(l, c)
 	   	} */
 
-	//func literal --- unname function
+	/* //func literal --- unname function
 	for l := range c {
 		go func() {
-			go checkLink(l, c)
+			go checkLink(l, c) // l was declared out of this literal func
 		}()
+
+	} */
+
+	for l := range c {
+		go func(l string) { //pass the variablee
+			go checkLink(l, c) // l was declared out of this literal func
+		}(l) // pass the variable also here
 
 	}
 }
