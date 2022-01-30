@@ -23,10 +23,18 @@ func main() {
 		go checkLink(link, c)
 
 	}
-	// infinite loop still bloking channel
+	/* 	// infinite loop still bloking channel
+	   	for l := range c {
+	   		//go checkLink(<-c, c)
+	   		go checkLink(l, c)
+	   	} */
+
+	//func literal --- unname function
 	for l := range c {
-		//go checkLink(<-c, c)
-		go checkLink(l, c)
+		go func() {
+			go checkLink(l, c)
+		}()
+
 	}
 }
 
